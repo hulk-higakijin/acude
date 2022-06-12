@@ -1,29 +1,54 @@
-<h2><%= t('.sign_up') %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="bg-no-repeat bg-cover bg-center relative" style="background-image: url(https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1951&amp;q=80);">
+  <div class="absolute bg-gradient-to-b from-green-500 to-green-400 opacity-75 inset-0 z-0"></div>
+  <div class="min-h-screen sm:flex sm:flex-row mx-0 justify-center">
+    <div class="flex-col flex  self-center p-10 sm:max-w-5xl xl:max-w-2xl  z-10">
+      <div class="self-start hidden lg:flex flex-col  text-white">
+        <img src="" class="mb-3">
+        <h1 class="mb-3 font-bold text-4xl">ようこそ、教育を覆す場所へ</h1>
+        <p class="pr-3">Lorem ipsum is placeholder text commonly used in the graphic, print,
+          and publishing industries for previewing layouts and visual mockups</p>
+      </div>
+    </div>
+    <div class="flex justify-center self-center  z-10">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  data: { turbo: false }) do |f| %>
+        <div class="p-12 bg-white mx-auto rounded-2xl w-100 ">
+          <div class="mb-4">
+            <h3 class="font-semibold text-2xl text-gray-800">Sign Up</h3>
+            <p class="text-gray-500">Please create your account.</p>
+          </div>
+          <div class="space-y-5">
+            <div class="space-y-2">
+              <%= f.label :email, class: "text-sm font-medium text-gray-700 tracking-wide" %>
+              <%= f.text_field :email, class: "w-full text-base px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-400", placeholder: "mail@gmail.com" %>
+            </div>
+            <div class="space-y-2">
+              <%= f.label :password, class: "mb-5 text-sm font-medium text-gray-700 tracking-wide" %>
+              <%= f.password_field :password, class: "w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400", placeholder: "Enter your password" %>
+            </div>
+            <div class="space-y-2">
+              <%= f.label :password_confirmation, class: "mb-5 text-sm font-medium text-gray-700 tracking-wide" %>
+              <%= f.password_field :password_confirmation, class: "w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400", placeholder: "Enter password again." %>
+            </div>
+            <div class="space-y-2">
+              
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-sm ml-auto">
+                <%= link_to 'or Sign in here.', new_account_session_path, class: "text-green-400 hover:text-green-500" %>
+              </div>
+            </div>
+            <div>
+              <%= f.submit "Sign up", class: "w-full flex justify-center bg-green-400  hover:bg-green-500 text-gray-100 p-3  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500" %>
+            </div>
+          </div>
+          <div class="pt-5 text-center text-gray-400 text-xs">
+            <span>
+              Copyright © 2021-2022
+              <a href="https://codepen.io/uidesignhub" rel="" target="_blank" title="Ajimon" class="text-green hover:text-green-500 ">AJI</a></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t('.sign_up') %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
