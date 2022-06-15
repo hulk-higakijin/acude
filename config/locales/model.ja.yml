@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      account: アカウント
+      prefecture: 都道府県
+      university: 大学
+    attributes:
+      account:
+        email: Eメール
+        password: パスワード
+        password_confirmation: パスワード（確認）
+      prefecture:
+        name: 都道府県名
+      university:
+        name: 学校名
+        url: 公式ホームページ
+        instruction: 学校紹介
+        note: 備考

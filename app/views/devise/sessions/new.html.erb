@@ -9,8 +9,8 @@
           and publishing industries for previewing layouts and visual mockups</p>
       </div>
     </div>
-    <div class="flex justify-center self-center z-10">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+§    <div class="flex justify-center self-center z-10">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name),  data: { turbo: false }) do |f| %>
         <div class="p-12 bg-white mx-auto rounded-2xl w-100 ">
           <div class="mb-4">
             <h3 class="font-semibold text-2xl text-gray-800">Sign In </h3>
@@ -30,6 +30,9 @@
                 <%= link_to 'or Create account here.', new_account_registration_path, class: "text-green-400 hover:text-green-500" %>
                 <%= link_to 'Forgot your password?', '#', class: "text-green-400 hover:text-green-500" %>
               </div>
+            </div>
+            <div class="flex" style="<%= 'display: none;' unless alert %>">
+              <p class="alert text-sm text-red-500"><%= alert %></p>
             </div>
             <div>
               <%= f.submit "Sign in", class: "w-full flex justify-center bg-green-400  hover:bg-green-500 text-gray-100 p-3  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500" %>
