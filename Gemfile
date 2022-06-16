@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+gem 'any_login'
 gem 'bootsnap', require: false
 gem 'csv'
 gem 'devise'
@@ -27,7 +28,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'any_login'
   gem 'rubocop', require: false
   gem 'web-console'
 end
