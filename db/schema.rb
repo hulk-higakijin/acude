@@ -42,11 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_110632) do
   end
 
   create_table "universities", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "introduction"
     t.bigint "prefecture_id", null: false
     t.text "url"
     t.text "note"
+    t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prefecture_id"], name: "index_universities_on_prefecture_id"
