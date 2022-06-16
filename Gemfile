@@ -27,6 +27,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'any_login'
   gem 'rubocop', require: false
   gem 'web-console'
 end
