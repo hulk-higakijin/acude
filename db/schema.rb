@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_16_110632) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_17_154854) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_110632) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
+  create_table "candidates", force: :cascade do |t|
+    t.string "name"
+    t.text "introduction"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_candidates_on_account_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.bigint "professor_id", null: false
+    t.bigint "candidate_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_chatrooms_on_candidate_id"
+    t.index ["professor_id"], name: "index_chatrooms_on_professor_id"
+  end
+
+  create_table "dreaming_faculties", force: :cascade do |t|
+    t.bigint "faculty_id", null: false
+    t.bigint "candidate_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_dreaming_faculties_on_candidate_id"
+    t.index ["faculty_id"], name: "index_dreaming_faculties_on_faculty_id"
+  end
+
   create_table "faculties", force: :cascade do |t|
     t.string "name"
     t.bigint "university_id", null: false
@@ -35,10 +62,60 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_110632) do
     t.index ["university_id"], name: "index_faculties_on_university_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "account_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_messages_on_account_id"
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+  end
+
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "professor_faculities", force: :cascade do |t|
+    t.bigint "professor_id", null: false
+    t.bigint "faculty_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["faculty_id"], name: "index_professor_faculities_on_faculty_id"
+    t.index ["professor_id"], name: "index_professor_faculities_on_professor_id"
+  end
+
+  create_table "professors", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_professors_on_account_id"
+  end
+
+  create_table "recruitments", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "professor_id", null: false
+    t.bigint "faculty_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["faculty_id"], name: "index_recruitments_on_faculty_id"
+    t.index ["professor_id"], name: "index_recruitments_on_professor_id"
+  end
+
+  create_table "researches", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "professor_id", null: false
+    t.bigint "faculty_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["faculty_id"], name: "index_researches_on_faculty_id"
+    t.index ["professor_id"], name: "index_researches_on_professor_id"
   end
 
   create_table "universities", force: :cascade do |t|
@@ -53,6 +130,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_110632) do
     t.index ["prefecture_id"], name: "index_universities_on_prefecture_id"
   end
 
+  add_foreign_key "candidates", "accounts"
+  add_foreign_key "chatrooms", "candidates"
+  add_foreign_key "chatrooms", "professors"
+  add_foreign_key "dreaming_faculties", "candidates"
+  add_foreign_key "dreaming_faculties", "faculties"
   add_foreign_key "faculties", "universities"
+  add_foreign_key "messages", "accounts"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "professor_faculities", "faculties"
+  add_foreign_key "professor_faculities", "professors"
+  add_foreign_key "professors", "accounts"
+  add_foreign_key "recruitments", "faculties"
+  add_foreign_key "recruitments", "professors"
+  add_foreign_key "researches", "faculties"
+  add_foreign_key "researches", "professors"
   add_foreign_key "universities", "prefectures"
 end
