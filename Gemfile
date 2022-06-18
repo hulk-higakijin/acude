@@ -23,14 +23,14 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem 'bullet'
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'bundler-audit'
   gem 'brakeman'
+  gem 'bullet'
+  gem 'bundler-audit'
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'rubocop', require: false
 end
 
 group :development do
-  gem 'rubocop', require: false
   gem 'web-console'
 end
 
