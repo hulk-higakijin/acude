@@ -1,7 +1,7 @@
 <div class="max-w-4xl mx-auto">
 
   <div>
-    <%= form_with(url: universities_path, data: { controller: "prefecture"}, method: :get) do |f| %>
+    <%= form_with(url: universities_path, data: { controller: "prefecture", turbo_frame: "university-lists"}, method: :get) do |f| %>
       <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name,
         { include_blank: "都道府県を選択してください", selected: params[:prefecture_id] },
         { class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5", data: { action: "input->prefecture#submit"}}
@@ -10,7 +10,7 @@
   </div>
 
   <br>
-  <% @universities.each do |university| %>
-    <%= university.prefecture.name %>：<%= university.name %><br/>
+  <%= turbo_frame_tag "university-lists" do %>
+    <%= render @universities %>
   <% end %>
 </div>
