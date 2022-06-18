@@ -1,0 +1,14 @@
+<nav class="mx-2 md:mx-10 my-4 flex gap-x-10">
+  <div class="flex">
+    <%= link_to 'Acude', root_path, class: "font-bold text-3xl my-auto" %>
+  </div>
+  <div class="flex mb-auto gap-x-2">
+    <%= link_to '募集', '#', class: 'px-4 py-2' %>
+    <%= link_to '研究', '#', class: 'px-4 py-2' %>
+    <%= link_to '大学', universities_path, class: "px-4 py-2 #{'border-b-4 border-green-500' if request.path.include?('/universities') }" %>
+  </div>
+  <div class="flex gap-x-4 ml-auto">
+    <%= link_to 'SignUp', new_account_registration_path, class: "bg-green-500 py-1 px-4 text-white hover:bg-green-600 rounded-md text-center my-auto" %>
+    <%= link_to 'Login', new_account_session_path, class: "border border-green-500 py-1 px-4 hover:bg-gray-100 rounded-md text-center my-auto" %>
+  </div>
+</nav>
