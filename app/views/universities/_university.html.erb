@@ -1,1 +1,4 @@
-  <%= university.prefecture.name %>：<%= university.name %><br/>
+<%= link_to university_path(university), class: "flex flex-col", data: { turbo: false } do %>
+  <%= embedded_svg "svg/school.svg", class: "h-20 w-20 rounded-full border border-gray-300 mx-auto my-2 hover:shadow-lg", style: "fill: gray;" %>
+  <span class="text-sm text-center text-gray-600"><%= university.name %></span>
+<% end %>

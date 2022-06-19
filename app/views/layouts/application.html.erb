@@ -11,9 +11,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="relative">
+    <%= render 'layouts/navbar' %>
     <main>
-      <%= render 'layouts/navbar' %>
       <%= yield %>
     </main>
     <%= any_login_here if defined?(AnyLogin) %>
