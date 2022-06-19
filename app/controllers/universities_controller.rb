@@ -3,7 +3,7 @@ class UniversitiesController < ApplicationController
   before_action :set_university, only: [:show]
 
   def index
-    @universities = @prefecture ? @prefecture.universities.active : University.active
+    @universities = @prefecture ? @prefecture.universities.result(params) : University.result(params)
   end
 
   def show; end
@@ -15,6 +15,6 @@ class UniversitiesController < ApplicationController
     end
 
     def set_university
-      @university = University.find(params[:id])
+      @university = University.active.find(params[:id])
     end
 end
