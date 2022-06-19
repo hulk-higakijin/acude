@@ -4,5 +4,6 @@ class University < ApplicationRecord
   has_one_attached :icon
   has_one_attached :thumbnail
 
-  scope :active, -> { where(active: true).order(:prefecture_id) }
+  default_scope { order(:prefecture_id) }
+  scope :active, -> { where(active: true) }
 end
