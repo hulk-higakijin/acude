@@ -8,6 +8,7 @@ gem 'bootsnap', require: false
 gem 'csv'
 gem 'devise'
 gem 'devise-i18n'
+gem 'image_processing'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
