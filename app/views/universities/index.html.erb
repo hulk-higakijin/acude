@@ -11,12 +11,14 @@
 
 
     <div class="ml-auto basis-2/3">
-      <%= turbo_frame_tag "university-lists", class: "grid grid-cols-4 gap-4" do %>
-        <%= render @universities %>
+      <%= turbo_frame_tag "university-lists" do %>
+        <div class="grid grid-cols-4 gap-4">
+          <%= render @universities %>
+        </div>
+        <%= paginate @universities %>    
       <% end %>
     </div>
 
-    
 
     <br>
   </div>

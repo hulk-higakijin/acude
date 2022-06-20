@@ -4,6 +4,7 @@ class UniversitiesController < ApplicationController
 
   def index
     @universities = @prefecture ? @prefecture.universities.result(search_params) : University.result(search_params)
+    @universities = @universities.page(params[:page]).per(24)
   end
 
   def show; end
