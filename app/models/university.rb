@@ -6,5 +6,5 @@ class University < ApplicationRecord
 
   default_scope { order(:prefecture_id) }
   scope :active, -> { where(active: true) }
-  scope :result, ->(params) { active.where('name LIKE(?)', "%#{params[:name]}%") }
+  scope :result, ->(params) { active.where('name LIKE(?)', "%#{params[:name]}%").page(params[:page]).per(24) }
 end
