@@ -19,6 +19,6 @@ class UniversitiesController < ApplicationController
     end
 
     def search_params
-      params.permit(:name)
+      params.permit(:name, :page)
     end
 end
