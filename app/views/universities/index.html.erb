@@ -11,7 +11,7 @@
 
 
     <div class="ml-auto basis-2/3">
-      <%= turbo_frame_tag "university-lists" do %>
+      <%= turbo_frame_tag "university-lists", data: { turbo_action: :advance } do %>
         <div class="grid grid-cols-4 gap-4">
           <%= render @universities %>
         </div>
