@@ -17,6 +17,29 @@ ActiveAdmin.register University do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  index do
+    column :id
+    column :name
+    column :prefecture
+    column :active
+    column :updated_at
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :prefecture
+      row :name
+      row :faculties
+      row :url do |e|
+        link_to e.url, e.url, target: "_blank"
+      end
+      row :note
+      row :introduction
+    end
+  end
   
   controller do
     def scoped_collection
