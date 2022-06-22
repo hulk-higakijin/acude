@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+gem 'activeadmin'
 gem 'any_login'
 gem 'bootsnap', require: false
 gem 'csv'
@@ -17,6 +18,7 @@ gem 'pry-rails'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.3'
 gem 'rails-i18n'
+gem 'sassc-rails'
 gem 'seed-fu'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
