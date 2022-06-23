@@ -13,7 +13,10 @@ ja:
         name: 都道府県名
       university:
         name: 学校名
+        introduction: 紹介文
         url: 公式ホームページ
         instruction: 学校紹介
         note: 備考
         prefecture: 都道府県
+        active: 有効
+        faculties: 学部一覧
