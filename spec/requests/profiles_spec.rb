@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Accounts", type: :request do
+RSpec.describe "Profiles", type: :request do
   describe "GET #new" do
     context '未ログイン時' do
       it 'ログインページにリダイレクトされること' do
-        get new_account_path
+        get new_profile_path
         expect(response).to redirect_to new_account_session_path
       end
     end
@@ -16,13 +16,13 @@ RSpec.describe "Accounts", type: :request do
       end
 
       it 'ステータス200を返すこと' do
-        get new_account_path
+        get new_profile_path
         expect(response).to have_http_status(200)
       end
 
       it '他のページにアクセスしてもこのページにリダイレクトされること' do
         get root_path
-        expect(response).to redirect_to new_account_path
+        expect(response).to redirect_to new_profile_path
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe "Accounts", type: :request do
       end
 
       it 'ルートページにリダイレクトされること' do
-        get new_account_path
+        get new_profile_path
         expect(response).to redirect_to root_path
       end
     end
