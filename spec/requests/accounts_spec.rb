@@ -20,7 +20,7 @@ RSpec.describe "Accounts", type: :request do
         expect(response).to have_http_status(200)
       end
 
-      it '他のページにアクセスしてもこのページにリダイレクトされることsarerukoto' do
+      it '他のページにアクセスしてもこのページにリダイレクトされること' do
         get root_path
         expect(response).to redirect_to new_account_path
       end
