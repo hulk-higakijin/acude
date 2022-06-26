@@ -38,14 +38,14 @@
                 </div>
                 <div class="flex mx-auto gap-x-8">
                   <label>
-                    <div class="flex flex-col" data-action="click->profile#selectCandidate">
+                    <div class="flex flex-col cursor-pointer" data-action="click->profile#selectCandidate">
                       <%= embedded_svg "svg/candidate.svg", class: "w-80 h-60 rounded-xl py-6 border border-green-500 hover:bg-green-200 hover:p-4" %>
                       <p class="text-green-500 mx-auto py-4 text-lg">受験生</p>
                     </div>
                     <%= radio_button_tag('status', 'candidate', true, class: "hidden") %>
                   </label>
                   <label>
-                    <div class="flex flex-col" data-action="click->profile#selectProfessor">
+                    <div class="flex flex-col cursor-pointer" data-action="click->profile#selectProfessor">
                       <%= embedded_svg "svg/professor.svg", class: "w-80 h-60 rounded-xl py-6 border border-green-500 hover:bg-green-200 hover:p-4" %>
                       <p class="text-green-500 mx-auto py-4 text-lg">教授</p>
                     </div>
