@@ -1,6 +1,6 @@
 <% content_for(:title, "#{@university.name} | ") %>
 <div class="absolute w-screen top-20 flex flex-col gap-y-6">
-  <div class="flex flex-col md:flex-row gap-x-6 mx-auto container px-2 md:px-20">
+  <div class="flex flex-col md:flex-row gap-x-6 mx-auto container px-4 md:px-20">
     <div class="flex gap-x-6">
       <div>
         <%= embedded_svg "svg/school.svg", class: "h-20 w-20 rounded-full border border-gray-300 mx-auto my-2", style: "fill: gray;" %>
@@ -25,7 +25,7 @@
   <div>
     <%= image_tag("no-image.png", class: "w-full h-96 object-cover") %>
   </div>
-  <div class="mx-auto container px-2 md:px-32">
+  <div class="mx-auto container px-4 md:px-32">
     <h2 class="text-xl border-l-8 border-green-500 pl-4 py-2 text-gray-600">設置学部</h2>
     <div class="flex flex-wrap gap-4 ml-4 p-4">
       <% @university.faculties.each do |faculty| %>
