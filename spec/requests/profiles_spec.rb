@@ -7,6 +7,7 @@ RSpec.describe "Profiles", type: :request do
       sign_in @account
       @account.create_candidate(name: 'hogehoge', introduction: 'foobar!')
     end
+
     it 'ステータス200を返すこと' do
       get detail_profile_path
       expect(response).to have_http_status(200)
