@@ -1,7 +1,7 @@
 <% content_for(:title, "大学を探す | ") %>
 <div class="absolute w-screen top-20">
-  <div class="max-w-3xl mx-auto flex gap-x-4">
-    <%= form_with(url: universities_path, data: { controller: "prefecture", turbo_frame: "university-lists"}, class: "basis-1/3 h-full sticky top-20", method: :get) do |f| %>
+  <div class="max-w-3xl mx-auto flex flex-col md:flex-row gap-4 px-4">
+    <%= form_with(url: universities_path, data: { controller: "prefecture", turbo_frame: "university-lists"}, class: "basis-1/3 h-full md:sticky top-20", method: :get) do |f| %>
       <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name,
         { include_blank: "都道府県を選択", selected: params[:prefecture_id] },
         { class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block py-1 w-full", data: { action: "input->prefecture#submit" }}
@@ -11,9 +11,9 @@
     <% end %>
 
 
-    <div class="ml-auto basis-2/3">
+    <div class="basis-2/3">
       <%= turbo_frame_tag "university-lists", data: { turbo_action: :advance } do %>
-        <div class="grid grid-cols-4 gap-4">
+        <div class="grid grid-cols-3 md:grid-cols-4 gap-4">
           <%= render @universities %>
         </div>
         <%= paginate @universities %>    

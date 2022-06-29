@@ -1,20 +1,45 @@
-<div class="relative">
-  <nav class="flex px-2 md:px-10 py-4 gap-x-6 w-full fixed bg-white z-50">
+<div class="relative" data-controller='toggle'>
+  <nav class="flex px-4 md:px-10 py-4 gap-x-6 w-full fixed bg-white z-50">
     <div class="flex">
+      <div class="md:hidden flex">
+        <span class="material-icons my-auto ml-2 mr-3 cursor-pointer" data-action='click->toggle#toggle touch->toggle#toggle'>menu</span>
+      </div>
       <%= link_to 'Acude', root_path, class: "font-bold text-3xl my-auto" %>
     </div>
-    <div class="flex mb-auto gap-x-2 hidden md:block my-auto">
-      <%= link_to '募集', '#', class: 'px-4 py-2 my-auto' %>
+    <div class="mb-auto gap-x-2 hidden md:flex my-auto">
+      <%= link_to '募集', '#', class: 'px-4 py-2' %>
       <%= link_to '研究', '#', class: 'px-4 py-2' %>
       <%= link_to '大学', universities_path, class: "px-4 py-2 #{'border-b-4 border-green-500' if request.path.include?('/universities') }" %>
     </div>
     <div class="flex gap-x-4 ml-auto my-auto">
       <% if account_signed_in? %>
-        <%= link_to 'Logout', destroy_account_session_path, class: "border border-green-500 py-1 px-4 hover:bg-gray-100 rounded-md text-center", method: :delete, data: { turbo_method: :delete } %>
+        <div class="inline-block text-sm leading-none rounded no-underline text-gray hover:text-gray-900 hover:bg-white">
+          <div class="relative" data-controller="dropdown">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none">
+              <span class="appearance-none flex items-center text-gray-700">
+                <img src="https://pbs.twimg.com/profile_images/1388720052862525444/6Ge2RLYf_400x400.jpg" class="h-7 w-7 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-4 w-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
+              </span>
+            </div>
+            <div data-dropdown-target="menu" class="absolute right-0 mt-2 hidden">
+              <div class="bg-white shadow rounded border overflow-hidden">
+                <%= link_to 'Profile',  '#', data: { action: "click->dropdown#toggle" }, class: 'no-underline block pl-8 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap' %>
+                <%= link_to 'Logout', destroy_account_session_path, method: :delete, data: { action: "click->dropdown#toggle", turbo_method: :delete }, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap' %>
+              </div>
+            </div>
+          </div>
+        </div>
       <% else %>
         <%= link_to 'SignUp', new_account_registration_path, class: "bg-green-500 py-1 px-4 text-white hover:bg-green-600 rounded-md text-center" %>
         <%= link_to 'Login', new_account_session_path, class: "border border-green-500 py-1 px-4 hover:bg-gray-100 rounded-md text-center" %>
       <% end %>
     </div>
   </nav>
+  <div data-toggle-target='toggleable' class="w-screen fixed top-16 bg-green-500 z-50 px-2 py-4 hidden">
+    <ul class="text-white w-fit mx-auto flex flex-col gap-y-4">
+      <li>募集</li>
+      <li>研究</li>
+      <li><%= link_to '大学', universities_path %></li>
+    </ul>
+  </div>
 </div>
