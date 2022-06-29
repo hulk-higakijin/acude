@@ -1,9 +1,12 @@
-<div class="relative">
+<div class="relative" data-controller='toggle'>
   <nav class="flex px-4 md:px-10 py-4 gap-x-6 w-full fixed bg-white z-50">
     <div class="flex">
+      <div class="md:hidden flex">
+        <span class="material-icons my-auto ml-2 mr-3 cursor-pointer" data-action='click->toggle#toggle touch->toggle#toggle'>menu</span>
+      </div>
       <%= link_to 'Acude', root_path, class: "font-bold text-3xl my-auto" %>
     </div>
-    <div class="flex mb-auto gap-x-2 hidden md:block my-auto">
+    <div class="mb-auto gap-x-2 hidden md:flex my-auto">
       <%= link_to '募集', '#', class: 'px-4 py-2 my-auto' %>
       <%= link_to '研究', '#', class: 'px-4 py-2' %>
       <%= link_to '大学', universities_path, class: "px-4 py-2 #{'border-b-4 border-green-500' if request.path.include?('/universities') }" %>
@@ -20,8 +23,8 @@
             </div>
             <div data-dropdown-target="menu" class="absolute right-0 mt-2 hidden">
               <div class="bg-white shadow rounded border overflow-hidden">
-                  <%= link_to 'Profile',  '#', data: { action: "click->dropdown#toggle" }, class: 'no-underline block pl-8 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap' %>
-                  <%= link_to 'Logout', destroy_account_session_path, method: :delete, data: { action: "click->dropdown#toggle", turbo_method: :delete }, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap' %>
+                <%= link_to 'Profile',  '#', data: { action: "click->dropdown#toggle" }, class: 'no-underline block pl-8 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap' %>
+                <%= link_to 'Logout', destroy_account_session_path, method: :delete, data: { action: "click->dropdown#toggle", turbo_method: :delete }, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap' %>
               </div>
             </div>
           </div>
@@ -32,4 +35,11 @@
       <% end %>
     </div>
   </nav>
+  <div data-toggle-target='toggleable' class="w-screen fixed top-16 bg-green-500 z-50 px-2 py-4 hidden">
+    <ul class="text-white w-fit mx-auto flex flex-col gap-y-4">
+      <li>募集</li>
+      <li>研究</li>
+      <li><%= link_to '大学', universities_path %></li>
+    </ul>
+  </div>
 </div>

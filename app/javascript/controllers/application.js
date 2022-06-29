@@ -8,6 +8,7 @@ window.Stimulus   = application
 
 export { application }
 
-import { Modal, Dropdown } from "tailwindcss-stimulus-components"
+import { Modal, Dropdown, Toggle } from "tailwindcss-stimulus-components"
 application.register('modal', Modal)
 application.register('dropdown', Dropdown)
+application.register('toggle', Toggle)
