@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   def show
     ## professorのロジックも考える
-    @candidate = current_account.candidate  
+    @candidate = current_account.candidate
   end
 
   def new
