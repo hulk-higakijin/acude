@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   private
 
     def require_profile
-      redirect_to new_profile_path unless request.path.include?('profile') || request.path.include?('account')
+      redirect_to new_profile_path unless request.path == ('/profile/new') || request.path.include?('account')
     end
 end
