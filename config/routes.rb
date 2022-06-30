@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   root 'home#index'
   devise_for :accounts
   resources :universities, only: [:index, :show]
-  resources :profiles, only: [:create, :new, :edit, :update]
-  get '/profile' => 'profiles#show', as: "detail_profile"
+  resource :profile
 end

@@ -1,5 +1,5 @@
 <% content_for(:title, "アカウントセットアップ | ") %>
-<%= form_with(url: profiles_path, model: @account, method: :post) do |f| %>
+<%= form_with(url: profile_path, model: @account, method: :post) do |f| %>
   <div class="absolute w-screen top-20 flex flex-col gap-y-6">
     <div class="container w-fit mx-auto flex flex-col gap-y-4 px-2 py-6 md:px-20">
       <p class="text-green-500 mx-auto text-xl font-bold p-2">アカウントセットアップ</p>

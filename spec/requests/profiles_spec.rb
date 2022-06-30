@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Profiles", type: :request do
-  describe "GET #show（GET '/profile'）" do
+  describe "GET #show" do
     before do
       @account = create(:account)
       sign_in @account
@@ -9,7 +9,7 @@ RSpec.describe "Profiles", type: :request do
     end
 
     it 'ステータス200を返すこと' do
-      get detail_profile_path
+      get profile_path
       expect(response).to have_http_status(200)
     end
 
