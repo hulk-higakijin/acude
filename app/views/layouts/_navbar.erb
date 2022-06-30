@@ -1,10 +1,10 @@
 <div class="relative" data-controller='toggle'>
-  <nav class="flex px-4 md:px-10 py-2 gap-x-6 w-full fixed bg-white z-50 border-b border-gray-200">
+  <nav class="flex px-4 md:px-10 mb-2 pt-2 gap-x-6 w-full fixed bg-white z-50 border-b border-gray-200">
     <div class="flex">
       <div class="md:hidden flex">
         <span class="material-icons my-auto ml-2 mr-3 cursor-pointer" data-action='click->toggle#toggle touch->toggle#toggle'>menu</span>
       </div>
-      <%= link_to 'Acude', root_path, class: "font-bold text-3xl mt-1" %>
+      <%= link_to 'Acude', root_path, class: "font-bold text-3xl" %>
     </div>
     <div class="mb-auto gap-x-2 hidden md:flex my-auto">
       <%= link_to '募集', '#', class: 'px-4 py-2' %>
@@ -35,7 +35,7 @@
       <% end %>
     </div>
   </nav>
-  <div data-toggle-target='toggleable' class="w-screen fixed top-16 bg-green-500 z-40 px-2 py-4 hidden -mt-2">
+  <div data-toggle-target='toggleable' class="w-screen fixed top-12 bg-green-500 z-40 px-2 py-4 hidden -mt-2">
     <ul class="text-white w-fit mx-auto flex flex-col gap-y-4">
       <li>募集</li>
       <li>研究</li>
