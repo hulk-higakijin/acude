@@ -2,8 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_account!
 
   def show
-    ## professorのロジックも考える
-    @candidate = current_account.candidate
+    @profile = current_account.profile
   end
 
   def new
