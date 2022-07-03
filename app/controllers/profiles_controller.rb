@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_account!
+  before_action :require_profile, if: -> { current_account.unidentified? }, only: %i[ show ]
 
   def show
     @profile = current_account.profile
@@ -25,5 +26,9 @@ class ProfilesController < ApplicationController
 
     def profile_params
       params.require(:account).permit(:name, :introduction)
+    end
+
+    def require_profile
+      redirect_to new_profile_path
     end
 end
