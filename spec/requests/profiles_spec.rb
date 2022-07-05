@@ -129,4 +129,28 @@ RSpec.describe "Profiles", type: :request do
       end
     end
   end
+
+  describe "GET #edit" do
+    context "未ログイン時" do
+      it 'ログインページにリダイレクトすること' do
+      end
+    end
+
+    context "ログインアカウントがtype: :unidentifiedのとき" do
+      it 'プロフィール作成ページにリダイレクトされること' do
+
+      end
+    end
+
+    context "ログインアカウントのステータスが確定しているとき" do
+      it 'ステータス200を返すこと' do
+        # get edit_profile_path
+        # expect(response).to have_http_status(200)
+      end
+
+      it '名前と紹介文が表示されていること' do
+        
+      end
+    end
+  end
 end
