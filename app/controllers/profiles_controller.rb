@@ -1,14 +1,12 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_account!
+  before_action :set_profile, only: %i[ show update edit ]
   before_action :require_profile, if: -> { current_account.unidentified? }, only: %i[show]
 
-  def show
-    @profile = current_account.profile
-  end
+  def show; end
 
   def new
     redirect_to root_path unless current_account.unidentified?
-    @account = current_account
   end
 
   def create
@@ -22,10 +20,21 @@ class ProfilesController < ApplicationController
     redirect_to root_path
   end
 
+  def edit; end
+
+  def update
+    @profile.update!(profile_params)
+    redirect_to profile_path
+  end
+
   private
 
+    def set_profile
+      @profile = current_account.profile
+    end
+
     def profile_params
-      params.require(:account).permit(:name, :introduction)
+      params.require(:profile).permit(:name, :introduction)
     end
 
     def require_profile
