@@ -95,12 +95,12 @@ RSpec.describe "Profiles", type: :request do
     context "未ログイン時" do
       it '保存されないこと' do
         expect do
-          post profile_path, params: { status: 'professor', account: { name: 'ズワイガニ教授', introduction: 'ミシシッピ川からやってきたよ' }}
+          post profile_path, params: { status: 'professor', profile: { name: 'ズワイガニ教授', introduction: 'ミシシッピ川からやってきたよ' }}
         end.to change { Professor.count }.by(0)
       end
 
       it 'ログインページにリダイレクトされること' do
-        post profile_path, params: { status: 'professor', account: { name: 'ズワイガニ教授', introduction: 'ミシシッピ川からやってきたよ' }}
+        post profile_path, params: { status: 'professor', profile: { name: 'ズワイガニ教授', introduction: 'ミシシッピ川からやってきたよ' }}
         expect(response).to redirect_to new_account_session_path
       end
     end
@@ -114,7 +114,7 @@ RSpec.describe "Profiles", type: :request do
       context "ログインアカウントがtype: :unidentifiedのとき" do
         it 'Professorのレコードが1つ増える' do
           expect do
-            post profile_path, params: { status: 'professor', account: { name: 'ズワイガニ教授', introduction: 'ミシシッピ川からやってきたよ' }}
+            post profile_path, params: { status: 'professor', profile: { name: 'ズワイガニ教授', introduction: 'ミシシッピ川からやってきたよ' }}
           end.to change { Professor.count }.from(0).to(1)
         end
       end
