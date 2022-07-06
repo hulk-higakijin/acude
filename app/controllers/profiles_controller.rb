@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_account!
-  before_action :set_profile, only: %i[ show update edit ]
-  before_action :require_profile, if: -> { current_account.unidentified? }, only: %i[show]
+  before_action :set_profile, only: %i[show update edit]
+  before_action :require_profile, if: -> { current_account.unidentified? }, only: %i[show edit update]
 
   def show; end
 
