@@ -6,4 +6,12 @@ class Account < ApplicationRecord
   has_one :professor
   has_one :candidate
   has_many :messages
+
+  def profile
+    if professor?
+      professor
+    elsif candidate?
+      candidate
+    end
+  end
 end

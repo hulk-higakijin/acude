@@ -1,0 +1,23 @@
+<% content_for(:title, "マイプロフィール | ") %>
+<div class="absolute w-screen top-20 flex flex-col gap-y-6">
+  <div class="container flex flex-col gap-y-4 py-6 mx-auto px-2 md:px-20 w-fit">
+    <p class="text-green-500 mx-auto text-xl font-bold p-2">マイプロフィール</p>
+    <div>
+      <p class="font-bold">アイコン</p>
+      <%= image_tag("https://pbs.twimg.com/profile_images/1388720052862525444/6Ge2RLYf_400x400.jpg", class: "h-20 w-20 rounded-full") %>
+    </div>
+    <div>
+      <p class="font-bold">名前</p>
+      <%= @profile.name %>
+    </div>
+    <div>
+      <p class="font-bold">紹介文</p>
+      <%= @profile.introduction %>
+    </div>
+    <div>
+      <p class="font-bold">タイプ</p>
+      <%= t("attributes.#{current_account.status}") %>
+    </div>
+    <%= link_to '編集', edit_profile_path, class: 'bg-green-500 hover:bg-green-600 w-full rounded-md text-white text-center' %>
+  </div>
+</div>

@@ -20,3 +20,6 @@ ja:
         prefecture: 都道府県
         active: 有効
         faculties: 学部一覧
+  attributes:
+    candidate: 受験生
+    professor: 教授
